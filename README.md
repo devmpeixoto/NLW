@@ -6,7 +6,7 @@
 <br>
 
 ## 🖥️ O Projeto
-Esse é um protótipo web Responsivo de uma cápsula do tempo para exibir memórias em uma linha do tempo.
+Esse é um protótipo Web Responsivo de uma cápsula do tempo para exibir memórias em uma linha do tempo.
 <br>
 <br>
 
