@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+}
+
+:root {
+  font-size: 16px;
+}
+
+/* 
+Estilizando a barra de rolagem com WEBKIT-SCROLLBAR
+*/
+
+/* 
+Está opção define a propriedade da barra de rolagem, que no caso utilizado a largura.
+*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* 
+Esta propriedade modifica o fundo da barra de rolagem.
+*/
+::-webkit-scrollbar-track {
+  background-color: #2c2c31;
+}
+
+/* 
+Define as propriedades da barra, parte que desliza na tela
+*/
+::-webkit-scrollbar-thumb {
+  background-color: #9e9ea0;
+}
+
+/* 
+Para fazer a movimentação ou definição de cor de um elemento, como se fosse em momentos chave. Depois você chama através do seletor ANIMATION.
+*/
+@keyframes entering {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes entering02 {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entering03 {
+  0% {
+    opacity: 0;
+    /* transform: translateX(100px); */
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateX(0); */
+  }
+}
+
+body {
+  background-color: #121215;
+  color: #eaeaea;
+
+  display: grid;
+  grid-template-areas: "profile timeline";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100vh;
+}
+
+aside {
+  grid-area: profile;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  border-right: 1px solid;
+  /* para incluir um gradiente na borda, utiliza-se a sintaxe abaixo */
+  border-image: linear-gradient(#727275, #2c2c31) 1;
+
+  /* Para importar a imagem local através do CSS */
+  background-image: url(assets/background.svg);
+  /* Fazer com que a imagem pegue do topo para direita o seu destaque */
+  background-position: top right;
+  /* Se não colocar essa opção, ele irá repetir a foto para preencher na tela */
+  background-repeat: no-repeat;
+  /* Aqui é definido o tamanho da imagem de fundo que será transmitido na tela */
+  background-size: auto 100%;
+}
+/* 
+Quando utilizado o seletor *, ele é como se fosse a aplicação UNIVERSAL que serve para aplicar por padrão todo conteudo do CSS. Quando aplicado dentro do ASIDE, ele significa que todos os elementos Filho do ASIDE sofreram essa mudança, o PAI não.
+*/
+/* aside *{
+  animation: entering 0.7s ease-in-out;
+} */
+
+aside img:nth-child(1) {
+  animation: entering 0.7s ease-in-out;
+}
+
+/* Quando houver como neste exemplo duas tags iguais, pode-se utilizar :nth-child(), e dentro do parenteses, inclui o numero (se é a primeira tag, segunda tag, ou terceira).
+Fazendo que as modificações sejam aplicado somente a este elemento*/
+aside img:nth-child(2) {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+
+  /* 
+  O primeiro gradiente é definido usando a função "linear-gradient" do CSS, com três cores (#d39e33, #ed5636 e #633bbc) e o valor "padding-box". Isso significa que o gradiente será aplicado dentro do elemento, mas não se estenderá para a borda.
+
+O segundo gradiente também usa a função "linear-gradient" do CSS, mas com um ângulo de 260 graus. Ele também usa as mesmas três cores, mas é definido como "border-box", o que significa que ele se estenderá pela borda do elemento.
+  */
+  border: 4px solid transparent;
+  background: linear-gradient(#d39e33, #ed5636, #633bbc) padding-box,
+    linear-gradient(260deg, #d39e33, #ed5636, #633bbc) border-box;
+
+  animation: entering02 0.7s ease-in-out;
+}
+
+aside p {
+  font-size: 2rem;
+  text-align: center;
+
+  animation: entering03 0.7s ease-in-out;
+}
+
+aside span {
+  font-size: 0.75rem;
+  color: #9e9ea0;
+
+  animation: entering03 0.7s ease-in-out;
+}
+
+nav {
+  padding: 64px;
+  grid-area: timeline;
+
+  /* 
+  Como o conteúdo na TAG ASIDE não consegue preencher toda a tela quando rolado para baixo, utiliza-se OVERFLOW-Y:SCROLL (significa na vertical) para que o conteúdo na TAG NAV role para baixo, deixando estático o conteúdo da TAG ASIDE, e adicionando na TAG NAV a barra de rolagem
+  */
+  overflow-y: auto;
+  /* 
+Chamado para o @KEYFRAME, dentro do bloco pai ou aonde voce quiser que seja replicado o efeito criado pelo @KEYFRAME
+*/
+  animation: entering 0.7s ease-in-out;
+}
+
+.memory {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.memory small {
+  color: #bebebf;
+  font-size: 0.75rem;
+}
+
+.memory h1 {
+  font-size: 2rem;
+  color: #eaeaea;
+}
+
+.memory div {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.memory img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+
+  transition: transform 0.3s ease;
+}
+
+.memory:hover img {
+  transform: scale(1.1);
+}
+
+.memory p {
+  font-size: 1.12rem;
+  line-height: 28px;
+  text-align: justify;
+  color: #bebebf;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 12px;
+  }
+
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.8fr;
+    grid-template-areas:
+      "profile"
+      "timeline";
+  }
+
+  aside{
+    border-right: none;
+    padding: 32px 12px;
+  }
+
+  nav{
+    overflow-y: visible;
+    padding: 22px;
+  }
+}
