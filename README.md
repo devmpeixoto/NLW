@@ -1,5 +1,5 @@
 # NLW
  Apresentação NLW - Protótipo
 <p align="center">
-<img src="assets/readme.png" alt="Demonstração Protótipo" width="100%"/>
+<img src=".github/readme.png" alt="Demonstração Protótipo" width="100%"/>
 </p>
